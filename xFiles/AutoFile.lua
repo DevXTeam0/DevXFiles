@@ -3,30 +3,30 @@ local text = msg.content_.text_
 if Sudo(msg) then
 if text == 'تفعيل النسخه التلقائيه' or text == 'تفعيل جلب نسخه الكروبات' or text == 'تفعيل عمل نسخه للمجموعات' then   
 Dev_Rio(msg.chat_id_,msg.id_, 1, "⌁︙تم تفعيل جلب نسخة الكروبات التلقائيه\n⌁︙سيتم ارسال نسخه تلقائيه للكروبات كل يوم الى خاص المطور الاساسي", 1, 'md')
-DevRio:del(x.."Rio:Lock:AutoFile")
+DevRio:del(DevX.."Rio:Lock:AutoFile")
 end
 if text == 'تعطيل النسخه التلقائيه' or text == 'تعطيل جلب نسخه الكروبات' or text == 'تعطيل عمل نسخه للمجموعات' then  
 Dev_Rio(msg.chat_id_,msg.id_, 1, "⌁︙تم تعطيل جلب نسخة الكروبات التلقائيه", 1, 'md')
-DevRio:set(x.."Rio:Lock:AutoFile",true) 
+DevRio:set(DevX.."Rio:Lock:AutoFile",true) 
 end 
 end
 
-if (text and not DevRio:get(x.."Rio:Lock:AutoFile")) then
-Time = DevRio:get(x.."Rio:AutoFile:Time")
+if (text and not DevRio:get(DevX.."Rio:Lock:AutoFile")) then
+Time = DevRio:get(DevX.."Rio:AutoFile:Time")
 if Time then 
-if Time ~= os.date("%x") then 
-local list = DevRio:smembers(x..'Rio:Groups') 
-local BotName = (DevRio:get(x.."Rio:NameBot") or 'بروكس')
-local GetJson = '{"BotId": '..x..',"BotName": "'..BotName..'","GroupsList":{'  
+if Time ~= os.date("%DevX") then 
+local list = DevRio:smembers(DevX..'Rio:Groups') 
+local BotName = (DevRio:get(DevX.."Rio:NameBot") or 'بروكس')
+local GetJson = '{"BotId": '..DevX..',"BotName": "'..BotName..'","GroupsList":{'  
 for k,v in pairs(list) do 
-LinkGroups = DevRio:get(x.."Rio:Groups:Links"..v)
-Welcomes = DevRio:get(x..'Rio:Groups:Welcomes'..v) or ''
-RioConstructors = DevRio:smembers(x..'Rio:RioConstructor:'..v)
-BasicConstructors = DevRio:smembers(x..'Rio:BasicConstructor:'..v)
-Constructors = DevRio:smembers(x..'Rio:Constructor:'..v)
-Managers = DevRio:smembers(x..'Rio:Managers:'..v)
-Admis = DevRio:smembers(x..'Rio:Admins:'..v)
-Vips = DevRio:smembers(x..'Rio:VipMem:'..v)
+LinkGroups = DevRio:get(DevX.."Rio:Groups:Links"..v)
+Welcomes = DevRio:get(DevX..'Rio:Groups:Welcomes'..v) or ''
+RioConstructors = DevRio:smembers(DevX..'Rio:RioConstructor:'..v)
+BasicConstructors = DevRio:smembers(DevX..'Rio:BasicConstructor:'..v)
+Constructors = DevRio:smembers(DevX..'Rio:Constructor:'..v)
+Managers = DevRio:smembers(DevX..'Rio:Managers:'..v)
+Admis = DevRio:smembers(DevX..'Rio:Admins:'..v)
+Vips = DevRio:smembers(DevX..'Rio:VipMem:'..v)
 if k == 1 then
 GetJson = GetJson..'"'..v..'":{'
 else
@@ -104,21 +104,21 @@ end
 GetJson = GetJson..'"Welcomes":"'..Welcomes..'"}'
 end
 GetJson = GetJson..'}}'
-local File = io.open('./'..x..'.json', "w")
+local File = io.open('./'..DevX..'.json', "w")
 File:write(GetJson)
 File:close()
 local Rio = 'https://api.telegram.org/bot' .. TokenBot .. '/sendDocument'
-local curl = 'curl "' .. Rio .. '" -F "chat_id='..DevId..'" -F "document=@'..x..'.json' .. '" -F "caption=⌁︙نسخه تلقائيه تحتوي على ↫ '..#list..' مجموعه"'
+local curl = 'curl "' .. Rio .. '" -F "chat_id='..DevId..'" -F "document=@'..DevX..'.json' .. '" -F "caption=⌁︙نسخه تلقائيه تحتوي على ↫ '..#list..' مجموعه"'
 io.popen(curl)
-io.popen('fm -fr '..x..'.json')
-DevRio:set(x.."Rio:AutoFile:Time",os.date("%x"))
+io.popen('fm -fr '..DevX..'.json')
+DevRio:set(DevX.."Rio:AutoFile:Time",os.date("%DevX"))
 end
 else 
-DevRio:set(x.."Rio:AutoFile:Time",os.date("%x"))
+DevRio:set(DevX.."Rio:AutoFile:Time",os.date("%DevX"))
 end
 end
 
 end
 return {
-x = AutoFile
+DevX = AutoFile
 }
