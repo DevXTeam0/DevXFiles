@@ -1,7 +1,7 @@
 local function Reply(msg)
 local text = msg.content_.text_
 if ChatType == 'sp' or ChatType == 'gp'  then
-if not DevRio:get(x..'Rio:Lock:Reply'..msg.chat_id_) then
+if not DevRio:get(DevX..'Rio:Lock:Reply'..msg.chat_id_) then
 if text == "انجب" or text == "نجب" or text == "انجبي" or text == "نجبي" or text == "انجبو" or text == "نجبو" then
 if SudoId(msg) then
 rd = 'مطوريي اغلط شكد متريد نورتنه ، ♥️💪🏿'
@@ -106,17 +106,17 @@ end
 
 if Manager(msg) then
 if text == 'تفعيل ردود البوت' or text == 'تفعيل الردود' then
-if not DevRio:get(x..'Rio:Lock:Reply'..msg.chat_id_) then
+if not DevRio:get(DevX..'Rio:Lock:Reply'..msg.chat_id_) then
 Dev_Rio(msg.chat_id_, msg.id_, 1, '⌁︙ردود البوت بالتاكيد مفعله ', 1, 'md')
 else
 Dev_Rio(msg.chat_id_, msg.id_, 1, '⌁︙تم تفعيل ردود البوت', 1, 'md')
-DevRio:del(x..'Rio:Lock:Reply'..msg.chat_id_)
+DevRio:del(DevX..'Rio:Lock:Reply'..msg.chat_id_)
 end end
 if text == 'تعطيل ردود البوت' or text == 'تعطيل الردود' then
-if DevRio:get(x..'Rio:Lock:Reply'..msg.chat_id_) then
+if DevRio:get(DevX..'Rio:Lock:Reply'..msg.chat_id_) then
 Dev_Rio(msg.chat_id_, msg.id_, 1, '⌁︙ردود البوت بالتاكيد معطله ', 1, 'md')
 else
-DevRio:set(x..'Rio:Lock:Reply'..msg.chat_id_,true)
+DevRio:set(DevX..'Rio:Lock:Reply'..msg.chat_id_,true)
 Dev_Rio(msg.chat_id_, msg.id_, 1, '⌁︙تم تعطيل ردود البوت', 1, 'md')
 end end
 end
@@ -124,5 +124,5 @@ end
 
 end
 return {
-x = Reply
+DevX = Reply
 }
